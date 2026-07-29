@@ -1,0 +1,3611 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oa.Cozmatico | جمالك يستحق الأفضل</title>
+    <meta name="description" content="oa.Cozmatico - متجر مستحضرات تجميل فاخر يقدم أرقى المنتجات للعناية والجمال">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="images/favicon.ico1.webp">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Aref+Ruqaa:wght@400;700&family=El+Messiri:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <style>
+        /* ============================================
+           CSS VARIABLES - LIGHT & DARK MODE
+        ============================================ */
+        :root {
+            --color-primary: #0a0a0a;
+            --color-accent: #3ca2fa;
+            --color-accent-2: #8b5cf6;
+            --color-accent-3: #ec4899;
+            --color-gold: #d4af37;
+            --color-cream: #f8f5f0;
+            --color-soft: #fafafa;
+            --color-white: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-light: #6b6b6b;
+            --color-border: #e8e8e8;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f5f0;
+            --color-card: #ffffff;
+            --color-nav: rgba(255, 255, 255, 0.9);
+            --gradient-main: linear-gradient(135deg, #3ca2fa 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(60,162,250,0.3) 0%, rgba(139,92,246,0.3) 100%);
+
+            --font-display: 'Aref Ruqaa', serif;
+            --font-heading: 'Reem Kufi', sans-serif;
+            --font-body: 'Tajawal', sans-serif;
+            --font-elegant: 'El Messiri', sans-serif;
+            --font-tech: 'Orbitron', sans-serif;
+
+            --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        [data-theme="dark"] {
+            --color-primary: #f5f5f5;
+            --color-accent: #60c5ff;
+            --color-accent-2: #a78bfa;
+            --color-accent-3: #f472b6;
+            --color-cream: #0a0a0f;
+            --color-soft: #0f0f15;
+            --color-white: #ffffff;
+            --color-text: #f5f5f5;
+            --color-text-light: #a0a0a8;
+            --color-border: #2a2a35;
+            --color-bg: #0a0a0f;
+            --color-bg-alt: #12121a;
+            --color-card: #15151f;
+            --color-nav: rgba(10, 10, 15, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-alt);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-main);
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ============================================
+           LOADING SCREEN
+        ============================================ */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 1s, visibility 1s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-family: var(--font-tech);
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-sub {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text-light);
+            margin-top: 10px;
+            letter-spacing: 8px;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--color-border);
+            margin-top: 40px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 1px;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gradient-main);
+            border-radius: 1px;
+            animation: loading 2.5s ease-in-out forwards;
+        }
+
+        .loader-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loader-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: floatParticle 3s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            to { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { transform: translateY(-100px) translateX(50px); opacity: 1; }
+        }
+
+        /* ============================================
+           CUSTOM CURSOR
+        ============================================ */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s, width 0.3s, height 0.3s, background 0.3s, border 0.3s;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s;
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hover ~ .cursor-dot {
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .cursor, .cursor-dot { display: none; }
+        }
+
+        /* ============================================
+           THEME TOGGLE
+        ============================================ */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--color-card);
+            border: 2px solid var(--color-border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--color-accent);
+        }
+
+        .theme-toggle-circle {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 22px;
+            height: 22px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            transition: transform 0.4s var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        [data-theme="dark"] .theme-toggle-circle {
+            transform: translateX(-30px);
+        }
+
+        .theme-icon {
+            font-size: 12px;
+        }
+
+        /* ============================================
+           PARTICLES BACKGROUND
+        ============================================ */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--color-accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
+           NAVBAR
+        ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: var(--color-nav);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 60px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.4s var(--transition-bounce);
+            filter: drop-shadow(0 4px 10px rgba(60, 162, 250, 0.2));
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-tech);
+            font-weight: 900;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s var(--transition-bounce);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text-main {
+            font-family: var(--font-tech);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--color-text);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text-sub {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            letter-spacing: 4px;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text);
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.4s var(--transition);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50%;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            background: var(--color-card);
+            color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-icon .badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--color-accent-3);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-text);
+            transition: all 0.3s;
+            border-radius: 1px;
+        }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: var(--color-bg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 100px 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-gradient-1 {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 70%;
+            background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(80px);
+            animation: blobMove 20s ease-in-out infinite;
+        }
+
+        .hero-gradient-2 {
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 60%;
+            background: radial-gradient(circle, var(--color-accent-3) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(80px);
+            animation: blobMove 25s ease-in-out infinite reverse;
+        }
+
+        .hero-gradient-3 {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 40%;
+            height: 50%;
+            background: radial-gradient(circle, var(--color-accent-2) 0%, transparent 70%);
+            opacity: 0.1;
+            filter: blur(80px);
+            animation: blobMove 30s ease-in-out infinite;
+        }
+
+        @keyframes blobMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 50px) scale(0.9); }
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--color-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.2s forwards;
+        }
+
+        .hero-tag-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        .hero-title .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(80px) rotate(10deg);
+            animation: wordReveal 0.8s forwards;
+        }
+
+        .hero-title .word:nth-child(1) { animation-delay: 0.5s; }
+        .hero-title .word:nth-child(2) { animation-delay: 0.7s; }
+        .hero-title .word:nth-child(3) { animation-delay: 0.9s; }
+
+        .hero-title .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .gradient-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gradient-main);
+            opacity: 0.3;
+            border-radius: 4px;
+            transform: scaleX(0);
+            animation: scaleIn 0.6s 1.5s forwards;
+            transform-origin: right;
+        }
+
+        @keyframes wordReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes scaleIn {
+            to { transform: scaleX(1); }
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.8s 1.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s 1.4s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--gradient-main);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--transition);
+            box-shadow: 0 10px 30px rgba(60, 162, 250, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: right 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            right: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(60, 162, 250, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: transparent;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+            opacity: 0;
+            animation: fadeInUp 0.8s 1.6s forwards;
+        }
+
+        .hero-stat {
+            position: relative;
+        }
+
+        .hero-stat-num {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: 5px;
+        }
+
+        /* Hero Visual Side */
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-main {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-main);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            position: relative;
+            overflow: hidden;
+            animation: morph 15s ease-in-out infinite;
+            box-shadow: 0 30px 80px rgba(60, 162, 250, 0.3);
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+
+        .hero-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-image-main::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(60, 162, 250, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .hero-image-main::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            top: 10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 15%;
+            left: -5%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-card-3 {
+            top: 50%;
+            left: -15%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-card-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .floating-card-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .floating-card-text {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            animation: fadeInUp 0.8s 2s forwards;
+        }
+
+        .scroll-mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid var(--color-text-light);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-mouse::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 2px;
+            animation: scrollWheel 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(15px); opacity: 0; }
+        }
+
+        /* ============================================
+           MARQUEE
+        ============================================ */
+        .marquee {
+            background: var(--gradient-main);
+            padding: 18px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee::before,
+        .marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .marquee::before {
+            right: 0;
+            background: linear-gradient(90deg, transparent, var(--color-accent));
+        }
+
+        .marquee::after {
+            left: 0;
+            background: linear-gradient(90deg, var(--color-accent-3), transparent);
+        }
+
+        .marquee-content {
+            display: inline-flex;
+            animation: marquee 25s linear infinite;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .marquee-item::after {
+            content: '✦';
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        /* ============================================
+           SECTION HEADERS
+        ============================================ */
+        .section {
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 18px;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-text);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-title .accent {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           FEATURES
+        ============================================ */
+        .features {
+            background: var(--color-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s var(--transition);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-accent);
+            box-shadow: 0 20px 50px rgba(60, 162, 250, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-glow);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            transition: transform 0.4s var(--transition-bounce);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-bottom: 12px;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           PRODUCTS
+        ============================================ */
+        .products {
+            background: var(--color-bg-alt);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border-color: var(--color-accent);
+        }
+
+        .product-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--color-bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-main);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+            transition: all 0.4s;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 0.2;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .product-emoji {
+            font-size: 5rem;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s var(--transition-bounce);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+
+        .product-card:hover .product-emoji {
+            transform: scale(1.15) rotate(-10deg);
+        }
+
+        .product-img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s var(--transition-bounce);
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.12) rotate(-5deg) translateY(-5px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--color-accent-3);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            z-index: 3;
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 3;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s var(--transition);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-action {
+            width: 38px;
+            height: 38px;
+            background: var(--color-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--color-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-action:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: scale(1.15);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .product-scent {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .product-scent::before {
+            content: '✦';
+            color: var(--color-accent);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .product-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-current {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-old {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            text-decoration: line-through;
+        }
+
+        .btn-cart {
+            width: 42px;
+            height: 42px;
+            background: var(--color-bg-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--color-text);
+        }
+
+        .btn-cart:hover {
+            background: var(--gradient-main);
+            color: white;
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* ============================================
+           STORY
+        ============================================ */
+        .story {
+            background: var(--color-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story::before {
+            content: 'oa.Cozmatico';
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-family: var(--font-tech);
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--color-text);
+            opacity: 0.02;
+            white-space: nowrap;
+            letter-spacing: -5px;
+        }
+
+        .story-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-visual {
+            position: relative;
+            height: 600px;
+        }
+
+        .story-img {
+            position: absolute;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .story-img-1 {
+            top: 0;
+            right: 0;
+            width: 65%;
+            height: 75%;
+            z-index: 2;
+        }
+
+        .story-img-2 {
+            bottom: 0;
+            left: 0;
+            width: 55%;
+            height: 65%;
+            z-index: 3;
+            border: 8px solid var(--color-bg);
+        }
+
+        .story-deco {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 2px dashed var(--color-accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .story-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--color-text);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .story-content h2 .accent {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-quote {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 20px 25px;
+            border-right: 3px solid var(--color-accent);
+            background: var(--color-card);
+            border-radius: 0 15px 15px 0;
+        }
+
+        .story-text {
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .story-signature {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .signature-name {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .signature-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+
+        .signature-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           LOCATIONS
+        ============================================ */
+        .locations {
+            background: var(--color-bg-alt);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-glow);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .location-card:hover::before {
+            opacity: 0.5;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(60, 162, 250, 0.2);
+            border-color: var(--color-accent);
+        }
+
+        .location-card.expanded {
+            grid-column: span 2;
+            min-height: 400px;
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-main);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-main);
+            filter: blur(15px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .location-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        .location-subtitle {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: 2px;
+        }
+
+        .location-toggle {
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text);
+            transition: all 0.3s;
+        }
+
+        .location-card:hover .location-toggle {
+            background: var(--color-accent);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .location-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-map {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            background: var(--gradient-main);
+            opacity: 0.2;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .location-map::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.2) 25%, transparent 25%);
+            background-size: 10px 10px;
+        }
+
+        .location-info {
+            flex: 1;
+        }
+
+        .location-coords {
+            font-family: var(--font-tech);
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .location-address {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .location-hours {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: 5px;
+        }
+
+        .location-map-expanded {
+            display: none;
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            background: var(--color-bg-alt);
+        }
+
+        .location-card.expanded .location-map-expanded {
+            display: block;
+        }
+
+        .location-card.expanded .location-content {
+            display: none;
+        }
+
+        .map-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-tile {
+            background: var(--color-bg-alt);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .location-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .marker-pin {
+            width: 40px;
+            height: 40px;
+            background: var(--color-accent);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(60, 162, 250, 0.5);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .marker-pin::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(-45deg) translateY(0); }
+            50% { transform: rotate(-45deg) translateY(-10px); }
+        }
+
+        /* ============================================
+           TESTIMONIALS
+        ============================================ */
+        .testimonials {
+            background: var(--color-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.4s var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-accent);
+            box-shadow: 0 20px 50px rgba(60, 162, 250, 0.1);
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.2;
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-text);
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           NEWSLETTER
+        ============================================ */
+        .newsletter {
+            background: var(--color-bg);
+            padding: 100px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--gradient-main);
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .newsletter-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 25px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .newsletter-form button {
+            padding: 15px 35px;
+            background: white;
+            color: var(--color-accent);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-family: var(--font-heading);
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            background: var(--color-bg);
+            padding: 80px 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, var(--gradient-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            color: var(--color-text);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 15px rgba(60, 162, 250, 0.2));
+            transition: transform 0.4s var(--transition);
+        }
+
+        .footer-brand:hover .footer-logo-img {
+            transform: scale(1.05);
+        }
+
+        .footer-brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            background: var(--gradient-main);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--gradient-main);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col a:hover {
+            color: var(--color-accent);
+            transform: translateX(-5px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--color-text-light);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-card);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding: 30px 0;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-heart {
+            color: var(--color-accent-3);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Text Hover Effect in Footer */
+        .footer-text-effect {
+            margin-top: 60px;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-text-effect svg {
+            width: 100%;
+            max-width: 1000px;
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* ============================================
+           MOBILE MENU
+        ============================================ */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-bg);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            transition: right 0.5s var(--transition-smooth);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--color-text);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .features-grid,
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-card.expanded {
+                grid-column: span 1;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .section,
+            .newsletter,
+            .footer {
+                padding: 80px 20px;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .features-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                background: transparent;
+                border: none;
+                padding: 0;
+                gap: 15px;
+            }
+
+            .newsletter-form input {
+                background: rgba(255,255,255,0.2);
+                border: 1px solid rgba(255,255,255,0.3);
+                border-radius: 50px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .newsletter-card {
+                padding: 50px 30px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- LOADING SCREEN -->
+    <div class="loader" id="loader">
+        <div class="loader-particles">
+            <div class="loader-particle" style="top: 20%; right: 20%;"></div>
+            <div class="loader-particle" style="top: 40%; right: 60%; animation-delay: 0.5s;"></div>
+            <div class="loader-particle" style="top: 60%; right: 30%; animation-delay: 1s;"></div>
+            <div class="loader-particle" style="top: 80%; right: 70%; animation-delay: 1.5s;"></div>
+        </div>
+        <div class="loader-logo">oa</div>
+        <div class="loader-sub">Cozmatico</div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- PARTICLES BG -->
+    <div class="particles" id="particles"></div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" id="menuClose">✕</div>
+        <a href="#home">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#story">قصتنا</a>
+        <a href="#locations">فروعنا</a>
+        <a href="#testimonials">آراء العملاء</a>
+        <a href="#contact">تواصل معنا</a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <img src="images/logo.webp" alt="oa.Cozmatico" class="logo-img">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#story">قصتنا</a></li>
+            <li><a href="#locations">فروعنا</a></li>
+            <li><a href="#testimonials">آراء العملاء</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- Theme Toggle -->
+            <div class="theme-toggle" id="themeToggle">
+                <div class="theme-toggle-circle">
+                    <span class="theme-icon" id="themeIcon">☀️</span>
+                </div>
+            </div>
+
+            <button class="nav-icon" aria-label="بحث">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
+            <button class="nav-icon" aria-label="المفضلة">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <span class="badge">3</span>
+            </button>
+            <button class="nav-icon" aria-label="السلة">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="badge">٢</span>
+            </button>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient-1"></div>
+            <div class="hero-gradient-2"></div>
+            <div class="hero-gradient-3"></div>
+            <div class="hero-grid"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-tag">
+                    <span class="hero-tag-dot"></span>
+                    <span>مجموعة جديدة ٢٠٢٦</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="word">جمالك</span>
+                    <span class="word gradient-text">يبدأ</span>
+                    <span class="word">هنا</span>
+                </h1>
+
+                <p class="hero-description">
+                    اكتشفي عالم oa.Cozmatico من المستحضرات الفاخرة المصممة خصيصاً لتبرز جمالك الطبيعي. تركيبات متطورة، نتائج مضمونة، وروعة في كل تفصيلة.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#products" class="btn-primary">
+                        <span>تسوقي الآن</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="19" y1="12" x2="5" y2="12"/>
+                            <polyline points="12 19 5 12 12 5"/>
+                        </svg>
+                    </a>
+                    <a href="#story" class="btn-secondary">
+                        <span>تعرفي علينا</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="500">٠</div>
+                        <div class="hero-stat-label">منتج متنوع</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="50">٠</div>
+                        <div class="hero-stat-label">ألف عميلة</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="100">٠</div>
+                        <div class="hero-stat-label">٪ طبيعية</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-main">
+                    <img src="images/Starville Whitening Roll on Vanilla Scent 60ml.webp" alt="oa.Cozmatico">
+                </div>
+
+                <div class="floating-card floating-card-1">
+                    <div class="floating-card-icon">✨</div>
+                    <div class="floating-card-title">تركيبة فاخرة</div>
+                    <div class="floating-card-text">مكونات طبيعية ١٠٠٪</div>
+                </div>
+
+                <div class="floating-card floating-card-2">
+                    <div class="floating-card-icon">🌿</div>
+                    <div class="floating-card-title">آمنة تماماً</div>
+                    <div class="floating-card-text">معتمدة من الخبراء</div>
+                </div>
+
+                <div class="floating-card floating-card-3">
+                    <div class="floating-card-icon">💎</div>
+                    <div class="floating-card-title">جودة عالية</div>
+                    <div class="floating-card-text">ضمان شامل</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-mouse"></div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span class="marquee-item">منتجات طبيعية</span>
+            <span class="marquee-item">توصيل مجاني</span>
+            <span class="marquee-item">جودة فاخرة</span>
+            <span class="marquee-item">تركيبة آمنة</span>
+            <span class="marquee-item">نتائج مضمونة</span>
+            <span class="marquee-item">عروض حصرية</span>
+            <span class="marquee-item">منتجات طبيعية</span>
+            <span class="marquee-item">توصيل مجاني</span>
+            <span class="marquee-item">جودة فاخرة</span>
+            <span class="marquee-item">تركيبة آمنة</span>
+            <span class="marquee-item">نتائج مضمونة</span>
+            <span class="marquee-item">عروض حصرية</span>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section features">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-tag">
+                <span>✦</span>
+                <span>لماذا نحن</span>
+                <span>✦</span>
+            </div>
+            <h2 class="section-title">ما يميز <span class="accent">oa.Cozmatico</span></h2>
+            <p class="section-subtitle">نقدم لكِ تجربة فريدة تجمع بين الفخامة والجودة والابتكار</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-icon">🌸</div>
+                <h3 class="feature-title">مكونات طبيعية</h3>
+                <p class="feature-text">جميع منتجاتنا مصنوعة من مكونات طبيعية ١٠٠٪ آمنة على البشرة</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">🧪</div>
+                <h3 class="feature-title">تركيبة علمية</h3>
+                <p class="feature-text">مطورة بأحدث الأبحاث العلمية لضمان أفضل النتائج</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">توصيل سريع</h3>
+                <p class="feature-text">توصيل مجاني لجميع المحافظات خلال ٢٤-٤٨ ساعة</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">💯</div>
+                <h3 class="feature-title">ضمان الجودة</h3>
+                <p class="feature-text">ضمان استرجاع خلال ١٤ يوم إذا لم تكوني راضية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section products" id="products">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-tag">
+                <span>✦</span>
+                <span>منتجاتنا</span>
+                <span>✦</span>
+            </div>
+            <h2 class="section-title">مجموعة <span class="accent">ستانفيل</span></h2>
+            <p class="section-subtitle">رول أون للتبييض بثمانية عطور مختلفة تناسب جميع الأذواق</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="product-image">
+                    <span class="product-badge">الأكثر مبيعاً</span>
+                    <div class="product-actions">
+                        <button class="product-action" title="أضيفي للمفضلة">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action" title="عرض سريع">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on 60ml.webp" alt="Stanville Whitening Roll on - العطر الأصلي" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">العطر الأصلي</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(٢٤٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart" title="أضيفي للسلة">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="product-image">
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Coconut Scent 60ml.webp" alt="Stanville Whitening Roll on - جوز الهند" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">عطر جوز الهند</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(١٨٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-image">
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Fresh Scent 60ml.webp" alt="Stanville Whitening Roll on - منعش" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">عطر منعش</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(١٥٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="product-image">
+                    <span class="product-badge">جديد</span>
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Lavender Scent 60ml.webp" alt="Stanville Whitening Roll on - الخزامى" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">عطر الخزامى</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(٢٠٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="product-image">
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Oriental Scent 60ml.webp" alt="Stanville Whitening Roll on - العطر الشرقي" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">العطر الشرقي</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(١٧٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="product-image">
+                    <span class="product-badge">حصري</span>
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Red Berrie Scent 60ml.webp" alt="Stanville Whitening Roll on - التوت الأحمر" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">عطر التوت الأحمر</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(١٩٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-image">
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Unscented 60ml.webp" alt="Stanville Whitening Roll on - بدون عطر" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">بدون عطر</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(١٢٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="product-image">
+                    <span class="product-badge">مميز</span>
+                    <div class="product-actions">
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                        <button class="product-action">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <img src="images/Starville Whitening Roll on Vanilla Scent 60ml.webp" alt="Stanville Whitening Roll on - الفانيليا" class="product-img">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Stanville</div>
+                    <h3 class="product-name">رول أون للتبييض - ٦٠ مل</h3>
+                    <div class="product-scent">عطر الفانيليا</div>
+                    <div class="product-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="rating-count">(٢٢٠ تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">١٤٥ ج.م</span>
+                        </div>
+                        <button class="btn-cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section story" id="story">
+        <div class="story-container">
+            <div class="story-visual" data-aos="fade-left">
+                <div class="story-deco"></div>
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80" alt="قصتنا" class="story-img story-img-1">
+                <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80" alt="قصتنا" class="story-img story-img-2">
+            </div>
+
+            <div class="story-content" data-aos="fade-right">
+                <div class="section-tag">
+                    <span>✦</span>
+                    <span>من نحن</span>
+                    <span>✦</span>
+                </div>
+                <h2>قصة <span class="accent">oa.Cozmatico</span></h2>
+
+                <p class="story-quote">"الجمال الحقيقي ينبع من الثقة بالنفس، ونحن هنا لنساعدكِ على إبرازه"</p>
+
+                <p class="story-text">بدأت رحلتنا من شغف حقيقي بصناعة الجمال والعناية بالبشرة. نؤمن بأن كل امرأة تستحق أن تشعر بالثقة والتميز، ولذلك نختار أفضل المكونات الطبيعية ونطور تركيباتنا بأحدث الأبحاث العلمية.</p>
+
+                <p class="story-text">منذ تأسيسنا، التزمنا بتقديم منتجات تجمع بين الفعالية والأمان، لتكوني دائماً في أبهى حُلك.</p>
+
+                <div class="story-signature">
+                    <div class="signature-name">oa</div>
+                    <div class="signature-info">
+                        <h4>فريق oa.Cozmatico</h4>
+                        <p>منذ ٢٠١٨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="section locations" id="locations">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-tag">
+                <span>✦</span>
+                <span>فروعنا</span>
+                <span>✦</span>
+            </div>
+            <h2 class="section-title">زورونا في أقرب <span class="accent">فرع</span></h2>
+            <p class="section-subtitle">نتشرف بخدمتكم في أربعة فروع مميزة في القاهرة الكبرى</p>
+        </div>
+
+        <div class="locations-grid">
+            <!-- Location 1: الوراق -->
+            <div class="location-card" data-aos="fade-up" data-aos-delay="0" data-lat="30.0822" data-lng="31.2167" data-name="الوراق">
+                <div class="location-header">
+                    <div class="location-name">
+                        <div class="location-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="location-title">الوراق</div>
+                            <div class="location-subtitle">فرع رئيسي</div>
+                        </div>
+                    </div>
+                    <button class="location-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="location-content">
+                    <div class="location-map"></div>
+                    <div class="location-info">
+                        <div class="location-coords">30.0822° N, 31.2167° E</div>
+                        <div class="location-address">شارع الوراق الرئيسي</div>
+                        <div class="location-hours">يومياً من ١٠ص - ١١م</div>
+                    </div>
+                </div>
+                <div class="location-map-expanded">
+                    <div class="map-tiles">
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8726/6106.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8727/6106.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8728/6106.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8726/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8727/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8728/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8726/6108.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8727/6108.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8728/6108.png');"></div>
+                    </div>
+                    <div class="location-marker">
+                        <div class="marker-pin"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location 2: شبرا مصر -->
+            <div class="location-card" data-aos="fade-up" data-aos-delay="100" data-lat="30.1085" data-lng="31.2500" data-name="شبرا مصر">
+                <div class="location-header">
+                    <div class="location-name">
+                        <div class="location-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="location-title">شبرا مصر</div>
+                            <div class="location-subtitle">فرع مميز</div>
+                        </div>
+                    </div>
+                    <button class="location-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="location-content">
+                    <div class="location-map"></div>
+                    <div class="location-info">
+                        <div class="location-coords">30.1085° N, 31.2500° E</div>
+                        <div class="location-address">شارع شبرا الرئيسي</div>
+                        <div class="location-hours">يومياً من ١٠ص - ١١م</div>
+                    </div>
+                </div>
+                <div class="location-map-expanded">
+                    <div class="map-tiles">
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8734/6094.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8735/6094.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8736/6094.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8734/6095.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8735/6095.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8736/6095.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8734/6096.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8735/6096.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8736/6096.png');"></div>
+                    </div>
+                    <div class="location-marker">
+                        <div class="marker-pin"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location 3: شبرا الخيمة -->
+            <div class="location-card" data-aos="fade-up" data-aos-delay="200" data-lat="30.1236" data-lng="31.3114" data-name="شبرا الخيمة">
+                <div class="location-header">
+                    <div class="location-name">
+                        <div class="location-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="location-title">شبرا الخيمة</div>
+                            <div class="location-subtitle">فرع عصري</div>
+                        </div>
+                    </div>
+                    <button class="location-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="location-content">
+                    <div class="location-map"></div>
+                    <div class="location-info">
+                        <div class="location-coords">30.1236° N, 31.3114° E</div>
+                        <div class="location-address">شارع شبرا الخيمة</div>
+                        <div class="location-hours">يومياً من ١٠ص - ١٢ص</div>
+                    </div>
+                </div>
+                <div class="location-map-expanded">
+                    <div class="map-tiles">
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8744/6087.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8745/6087.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8746/6087.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8744/6088.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8745/6088.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8746/6088.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8744/6089.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8745/6089.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8746/6089.png');"></div>
+                    </div>
+                    <div class="location-marker">
+                        <div class="marker-pin"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location 4: إمبابة -->
+            <div class="location-card" data-aos="fade-up" data-aos-delay="300" data-lat="30.0800" data-lng="31.1833" data-name="إمبابة">
+                <div class="location-header">
+                    <div class="location-name">
+                        <div class="location-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="location-title">إمبابة</div>
+                            <div class="location-subtitle">فرع جديد</div>
+                        </div>
+                    </div>
+                    <button class="location-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="location-content">
+                    <div class="location-map"></div>
+                    <div class="location-info">
+                        <div class="location-coords">30.0800° N, 31.1833° E</div>
+                        <div class="location-address">شارع إمبابة الرئيسي</div>
+                        <div class="location-hours">يومياً من ١٠ص - ١١م</div>
+                    </div>
+                </div>
+                <div class="location-map-expanded">
+                    <div class="map-tiles">
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8721/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8722/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8723/6107.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8721/6108.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8722/6108.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8723/6108.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8721/6109.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8722/6109.png');"></div>
+                        <div class="map-tile" style="background-image: url('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/14/8723/6109.png');"></div>
+                    </div>
+                    <div class="location-marker">
+                        <div class="marker-pin"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-tag">
+                <span>✦</span>
+                <span>آراء العملاء</span>
+                <span>✦</span>
+            </div>
+            <h2 class="section-title">ماذا تقول <span class="accent">عميلاتنا</span></h2>
+            <p class="section-subtitle">تجارب حقيقية من عميلاتنا المميزات</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">منتجات رائعة جداً! استخدمت رول أون الفانيليا والنتيجة مذهلة. عطر يدوم طويلاً وفعال في التبييض. أنصح به بشدة!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">س</div>
+                    <div class="author-info">
+                        <h4>سارة محمد</h4>
+                        <p>القاهرة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">أفضل مستحضرات تجميل استخدمتها! المكونات طبيعية والنتائج واضحة من أول أسبوع. تجربة تسوق رائعة أيضاً.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ن</div>
+                    <div class="author-info">
+                        <h4>نورة أحمد</h4>
+                        <p>الجيزة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">فروعهم منتشرة في كل مكان والخدمة ممتازة. اشتريت رول أون جوز الهند وكان رائعاً. شكراً oa.Cozmatico!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">م</div>
+                    <div class="author-info">
+                        <h4>مريم علي</h4>
+                        <p>القليوبية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter" id="contact">
+        <div class="newsletter-card" data-aos="zoom-in">
+            <div class="newsletter-content">
+                <h2>انضمي لعائلة <span style="font-style: italic;">oa.Cozmatico</span></h2>
+                <p>اشتركي في النشرة البريدية واحصلي على خصم ١٥٪ على أول طلب</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('شكراً لاشتراكك! سيصلك كود الخصم قريباً ✨');">
+                    <input type="email" placeholder="بريدكِ الإلكتروني" required>
+                    <button type="submit">اشتراك</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo.webp" alt="oa.Cozmatico" class="footer-logo-img">
+                    <p>منصة الجمال الأولى في مصر. نقدم لكِ أرقى المستحضرات بأسعار تناسب الجميع مع ضمان أعلى مستويات الجودة.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="فيسبوك">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="انستجرام">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="تويتر">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="واتساب">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>المتجر</h4>
+                    <ul>
+                        <li><a href="#">جديدنا</a></li>
+                        <li><a href="#">الأكثر مبيعاً</a></li>
+                        <li><a href="#">عروض حصرية</a></li>
+                        <li><a href="#">بطاقات الهدايا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>المساعدة</h4>
+                    <ul>
+                        <li><a href="#">الشحن والتوصيل</a></li>
+                        <li><a href="#">الإرجاع والاستبدال</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <span>info@oacozmatico.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <span>+20 100 123 4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <span>القاهرة، مصر</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEXT HOVER EFFECT -->
+            <div class="footer-text-effect">
+                <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg" id="textHoverSvg">
+                    <defs>
+                        <linearGradient id="textGradientFooter" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="25%">
+                            <stop offset="0%" stop-color="#eab308" id="stop1"/>
+                            <stop offset="25%" stop-color="#ef4444" id="stop2"/>
+                            <stop offset="50%" stop-color="#80eeb4" id="stop3"/>
+                            <stop offset="75%" stop-color="#06b6d4" id="stop4"/>
+                            <stop offset="100%" stop-color="#8b5cf6" id="stop5"/>
+                        </linearGradient>
+                        <radialGradient id="revealMaskFooter" gradientUnits="userSpaceOnUse" r="20%" cx="50%" cy="50%">
+                            <stop offset="0%" stop-color="white"/>
+                            <stop offset="100%" stop-color="black"/>
+                        </radialGradient>
+                        <mask id="textMaskFooter">
+                            <rect x="0" y="0" width="800" height="150" fill="url(#revealMaskFooter)"/>
+                        </mask>
+                    </defs>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" stroke-width="1" class="footer-text-base" style="font-family: 'Orbitron', sans-serif; font-size: 90px; font-weight: 900; fill: transparent; stroke: var(--color-border);">oa.Cozmatico</text>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" stroke-width="1" stroke="#3ca2fa" class="footer-text-animated" style="font-family: 'Orbitron', sans-serif; font-size: 90px; font-weight: 900; fill: transparent; stroke-dasharray: 2000; stroke-dashoffset: 2000;">oa.Cozmatico</text>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" stroke="url(#textGradientFooter)" stroke-width="1" mask="url(#textMaskFooter)" id="footerHoverText" style="font-family: 'Orbitron', sans-serif; font-size: 90px; font-weight: 900; fill: transparent; opacity: 0;">oa.Cozmatico</text>
+                </svg>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© ٢٠٢٦ oa.Cozmatico. جميع الحقوق محفوظة.</p>
+                <p>صُنع بكل <span class="footer-heart">♥</span> في مصر</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // ============================================
+        // LOADING SCREEN
+        // ============================================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2500);
+        });
+
+        // ============================================
+        // AOS ANIMATION
+        // ============================================
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // ============================================
+        // THEME TOGGLE
+        // ============================================
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'light' ? '☀️' : '🌙';
+        }
+
+        // ============================================
+        // CUSTOM CURSOR
+        // ============================================
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor hover
+        document.querySelectorAll('a, button, .product-card, .feature-card, .location-card, .testimonial-card, .theme-toggle, .nav-icon').forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // ============================================
+        // PARTICLES
+        // ============================================
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 4 + 1;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.opacity = Math.random() * 0.4 + 0.1;
+            if (Math.random() > 0.5) {
+                particle.style.background = 'var(--color-accent-2)';
+            } else if (Math.random() > 0.5) {
+                particle.style.background = 'var(--color-accent-3)';
+            }
+            particlesContainer.appendChild(particle);
+        }
+
+        // ============================================
+        // NAVBAR SCROLL
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuClose = document.getElementById('menuClose');
+
+        menuToggle.addEventListener('click', () => mobileMenu.classList.add('active'));
+        menuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        // ============================================
+        // LOCATION CARDS - EXPAND/COLLAPSE
+        // ============================================
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+
+                // Close others
+                document.querySelectorAll('.location-card.expanded').forEach(c => {
+                    if (c !== card) c.classList.remove('expanded');
+                });
+
+                card.classList.toggle('expanded');
+            });
+        });
+
+        // ============================================
+        // COUNTER ANIMATION
+        // ============================================
+        function animateCounters() {
+            const counters = document.querySelectorAll('.hero-stat-num');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(easeOut * target);
+                    counter.textContent = current.toLocaleString('ar-EG');
+                    if (progress < 1) requestAnimationFrame(update);
+                    else counter.textContent = target.toLocaleString('ar-EG');
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const stats = document.querySelector('.hero-stats');
+        if (stats) counterObserver.observe(stats);
+
+        // ============================================
+        // FOOTER TEXT HOVER EFFECT
+        // ============================================
+        const footerSvg = document.getElementById('textHoverSvg');
+        const footerHoverText = document.getElementById('footerHoverText');
+        const revealMask = document.getElementById('revealMaskFooter');
+
+        if (footerSvg) {
+            footerSvg.addEventListener('mousemove', (e) => {
+                const rect = footerSvg.getBoundingClientRect();
+                const cx = ((e.clientX - rect.left) / rect.width) * 100;
+                const cy = ((e.clientY - rect.top) / rect.height) * 100;
+                revealMask.setAttribute('cx', cx + '%');
+                revealMask.setAttribute('cy', cy + '%');
+                footerHoverText.style.opacity = '1';
+            });
+
+            footerSvg.addEventListener('mouseleave', () => {
+                footerHoverText.style.opacity = '0';
+            });
+        }
+
+        // Animate the dashed text
+        const animatedText = document.querySelector('.footer-text-animated');
+        if (animatedText) {
+            setTimeout(() => {
+                animatedText.style.transition = 'stroke-dashoffset 4s ease-in-out';
+                animatedText.style.strokeDashoffset = '0';
+            }, 500);
+        }
+
+        // ============================================
+        // MAGNETIC BUTTON EFFECT
+        // ============================================
+        document.querySelectorAll('.btn-primary, .nav-icon, .theme-toggle').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // ============================================
+        // PRODUCT CARD 3D TILT
+        // ============================================
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                card.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // ============================================
+        // FEATURE ICON ROTATION ON SCROLL
+        // ============================================
+        const featureObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const icon = entry.target.querySelector('.feature-icon');
+                    icon.style.transform = 'rotate(360deg)';
+                    setTimeout(() => {
+                        icon.style.transform = 'rotate(0deg)';
+                    }, 800);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            featureObserver.observe(card);
+        });
+
+        // ============================================
+        // SMOOTH SCROLL REVEAL
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
